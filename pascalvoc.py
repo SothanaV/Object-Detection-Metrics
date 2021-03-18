@@ -431,5 +431,5 @@ results.append({'mAP':mAP})
 
 import json
 
-with open(os.path.join('results','results.json')) as f:
+with open(os.path.join('results','results.json'), 'w') as f:
     json.dump(results, f)
