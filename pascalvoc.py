@@ -408,7 +408,7 @@ for metricsPerClass in detections:
         'recall':list(recall),
         'totalPositives':totalPositives,
         'total_TP':total_TP,
-        'total_FP':total_TP
+        'total_FP':total_FP
     }
 
     if totalPositives > 0:
