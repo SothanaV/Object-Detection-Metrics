@@ -387,7 +387,7 @@ f.write('Object Detection Metrics\n')
 f.write('https://github.com/rafaelpadilla/Object-Detection-Metrics\n\n\n')
 f.write('Average Precision (AP), Precision and Recall per class:')
 
-results = []
+results = {}
 
 # each detection is a class
 for metricsPerClass in detections:
@@ -400,16 +400,17 @@ for metricsPerClass in detections:
     totalPositives = metricsPerClass['total positives']
     total_TP = metricsPerClass['total TP']
     total_FP = metricsPerClass['total FP']
-    results.append({
+
+    results[cl] = {
         'class':cl,
         'AP':ap,
-        'precision':precision,
-        'recall':recall,
+        'precision':list(precision),
+        'recall':list(recall),
         'totalPositives':totalPositives,
         'total_TP':total_TP,
         'total_FP':total_TP
+    }
 
-    })
     if totalPositives > 0:
         validClasses = validClasses + 1
         acc_AP = acc_AP + ap
@@ -427,7 +428,7 @@ mAP = acc_AP / validClasses
 mAP_str = "{0:.2f}%".format(mAP * 100)
 print('mAP: %s' % mAP_str)
 f.write('\n\n\nmAP: %s' % mAP_str)
-results.append({'mAP':mAP})
+results['mAP'] = mAP
 
 import json
 
