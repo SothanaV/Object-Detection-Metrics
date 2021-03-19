@@ -400,6 +400,7 @@ for metricsPerClass in detections:
     totalPositives = metricsPerClass['total positives']
     total_TP = metricsPerClass['total TP']
     total_FP = metricsPerClass['total FP']
+    total_FN = metricsPerClass['total FN']
 
     results[cl] = {
         'class':cl,
@@ -408,7 +409,8 @@ for metricsPerClass in detections:
         'recall':list(recall),
         'totalPositives':totalPositives,
         'total_TP':total_TP,
-        'total_FP':total_FP
+        'total_FP':total_FP,
+        'total_FN':total_FN
     }
 
     if totalPositives > 0:
