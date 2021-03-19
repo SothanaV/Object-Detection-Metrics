@@ -143,7 +143,8 @@ class Evaluator:
                 'interpolated recall': mrec,
                 'total positives': npos,
                 'total TP': np.sum(TP),
-                'total FP': np.sum(FP)
+                'total FP': np.sum(FP),
+                'total FP': npos - np.sum(TP),
             }
             ret.append(r)
         return ret
