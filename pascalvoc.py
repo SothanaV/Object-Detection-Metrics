@@ -401,16 +401,20 @@ for metricsPerClass in detections:
     total_TP = metricsPerClass['total TP']
     total_FP = metricsPerClass['total FP']
     total_FN = metricsPerClass['total FN']
+    interpolated_recall = metricsPerClass['interpolated recall']
+    interpolated_precision = metricsPerClass['interpolated precision']
 
     results[cl] = {
         'class':cl,
         'AP':ap,
         'precision':list(precision),
         'recall':list(recall),
+        'interpolated_recall':list(interpolated_recall),
+        'interpolated_precision':list(interpolated_precision),
         'totalPositives':totalPositives,
         'total_TP':total_TP,
         'total_FP':total_FP,
-        'total_FN':total_FN
+        'total_FN':total_FN,
     }
 
     if totalPositives > 0:
