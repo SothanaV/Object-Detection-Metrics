@@ -148,7 +148,7 @@ def getBoundingBoxes(directory,
     # x2, y2 represents the most bottom-right coordinates of the bounding box
     for f in files:
         nameOfImage = f.replace(".txt", "")
-        fh1 = open(f, "r")
+        fh1 = open(f, "r", encoding='utf-8')
         for line in fh1:
             line = line.replace("\n", "")
             if line.replace(' ', '') == '':
@@ -430,13 +430,18 @@ for metricsPerClass in detections:
         f.write('\nPrecision: %s' % prec)
         f.write('\nRecall: %s' % rec)
 
-mAP = acc_AP / validClasses
-mAP_str = "{0:.2f}%".format(mAP * 100)
-print('mAP: %s' % mAP_str)
-f.write('\n\n\nmAP: %s' % mAP_str)
-results['mAP'] = mAP
+try:
+    mAP = acc_AP / validClasses
+    mAP_str = "{0:.2f}%".format(mAP * 100)
+    print('mAP: %s' % mAP_str)
+    f.write('\n\n\nmAP: %s' % mAP_str)
+    results['mAP'] = mAP
+except Exception:
+    pass
 
 import json
 
 with open(os.path.join(savePath,'results.json'), 'w') as f:
     json.dump(results, f)
+
+f.close()
