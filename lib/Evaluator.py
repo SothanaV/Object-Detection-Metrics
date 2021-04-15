@@ -285,7 +285,8 @@ class Evaluator:
             #                 arrowprops=dict(arrowstyle="->", connectionstyle="arc3"),
             #                 bbox=box)
             if savePath is not None:
-                plt.savefig(os.path.join(savePath, "{}.{}".format(classId, "png").encode('uft-8-sig')))
+                # plt.savefig(os.path.join(savePath, "{}.{}".format(classId, "png")))
+                pass
             if showGraphic is True:
                 plt.show()
                 # plt.waitforbuttonpress()
