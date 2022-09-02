@@ -153,7 +153,10 @@ def getBoundingBoxes(directory,
             line = line.replace("\n", "")
             if line.replace(' ', '') == '':
                 continue
-            splitLine = line.split(" ")
+            splitLine = line.replace(' ','').split(',')
+            if len(splitLine) < 5:
+                continue
+#             splitLine = line.split(" ")
             if isGT:
                 # idClass = int(splitLine[0]) #class
                 idClass = (splitLine[0])  # class
